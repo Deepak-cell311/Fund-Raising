@@ -11,7 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const corsOption = {
-  origin: "https://fund-raising-psi.vercel.app/",
+  // origin: "https://fund-raising-psi.vercel.app/",
+  origin: "*",
   methods: "GET, POST, PUT, DELETE, HEAD, PATCH",
   credentials: true,
 };
