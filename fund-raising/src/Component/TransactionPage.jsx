@@ -9,7 +9,7 @@ const TransactionPage = () => {
     useEffect(() => {
         const fetchPayments = async () => {
             try {
-                const response = await fetch('fund-raising-ird4.vercel.app/api/payments');
+                const response = await fetch('https://fund-raising-ird4.vercel.app/api/payments');
                 if (!response.ok) {
                     throw new Error('Failed to fetch payments');
                 }
