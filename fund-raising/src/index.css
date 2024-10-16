@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+.children{
+  height: 36rem;
+}
+.progress-bar {
+  appearance: none; 
+  width: 384px;
+  height: 4px; 
+  background-color: rgb(230, 225, 225); 
+  border-radius: 5px;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: rgb(230, 225, 225); 
+}
+
+.progress-bar::-webkit-progress-value {
+  background-color: #ec5858; 
+  border-radius: 5px; 
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: #ec5858; 
+}
+.card p {
+  max-height: 2.5em; 
+  overflow: hidden;
+}
+
+
+/* General styles */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100%;
+  max-width: 300px; 
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+}
+
+/* Flex styles */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .flex-row {
+      flex-direction: row;
+  }
+
+  .flex-col {
+      flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      width: 100%; 
+  }
+
+  .main-content {
+      margin-top: 1rem; 
+  }
+}
+
+/* Progress bar styles */
+.progress-bar {
+  width: 100%;
+}
+
+/* Button styles */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+/* Adjust margins and paddings for smaller screens */
+@media (max-width: 640px) {
+  .mx-10 {
+      margin-left: 1rem;
+      margin-right: 1rem;
+  }
+
+  .mt-10 {
+      margin-top: 1rem;
+  }
+
+  .text-xl {
+      font-size: 1.25rem; 
+  }
+}
+
+
+
+/* Additional CSS styles */
+.sidebar {
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      height: 100%; 
+      z-index: 10; 
+      background: white; 
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; 
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  width: 90%; 
+  max-width: 500px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.modal-overlay {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.input-focus {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+.button-success {
+  transition: background-color 0.3s;
+}
+
+.button-success:hover {
+  background-color: #38b2ac; 
+}
+
+
+/* Add this to your CSS file */
+.modal-overlay {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.input-focus {
+  animation: bounce 0.3s ease;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+.button-success {
+  transition: background-color 0.3s;
+}
+
+.button-success:hover {
+  background-color: #38b2ac;
+}
+
+
+/* Add this to your CSS file */
+@keyframes slideUp {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
+
+
+
+
+
