@@ -15,7 +15,7 @@ const corsOption = {
   // origin: "https://fund-raising-psi.vercel.app/",
   origin: ["https://fund-raising-psi.vercel.app", "http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 };
 // Middleware
