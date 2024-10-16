@@ -26,6 +26,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use('/api/donations', donationRoutes);
 app.use('/api/payments', paymentsRoutes);
 
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
