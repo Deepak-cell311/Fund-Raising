@@ -27,7 +27,7 @@ const DonationPage = () => {
 
         try {
             console.log('Sending donation data:', donationData);
-            const response = await fetch('https://fund-raising-psi.vercel.app/donation', {
+            const response = await fetch('https://fund-raising-psi.vercel.app/donations', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
