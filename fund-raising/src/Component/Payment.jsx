@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import donate from "../assets/donate.jpg";
 import Confetti from 'react-confetti';
 import { useState, useEffect } from 'react';
@@ -10,6 +10,7 @@ const Payment = () => {
     const location = useLocation();
     const [showConfetti, setShowConfetti] = useState(false);
     const [formAnimation, setFormAnimation] = useState(false);
+    const navigate = useNavigate()
     const { amount } = location.state || {};
 
     useEffect(() => {
@@ -41,6 +42,11 @@ const Payment = () => {
             toast.success("Payment processed successfully!");
             setShowConfetti(true); // Show confetti on successful payment
             console.log('Payment response:', result);
+            
+            setTimeout(() => {
+                
+                navigate("/")
+            }, 10000);
         } catch (error) {
             toast.error(`Payment failed: ${error.message}`);
             console.error('Payment error:', error);
