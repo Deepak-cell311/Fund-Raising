@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const donationRoutes = require('./routes/donation');
 const paymentsRoutes = require('./routes/payment');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -23,12 +24,20 @@ app.options('', cors(corsOption));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('MongoDB connection error:', err);
+  }
+}
+
+connectToDatabase();
+
 
 // Routes
 app.get('/', (req, res) => {
