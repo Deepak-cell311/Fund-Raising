@@ -23,6 +23,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => console.log(err));
 
 // Routes
+app.get('/', (req, res) => {
+     res.status(200).json({message: "API is running"})
+})
 app.use('/api/donations', donationRoutes);
 app.use('/api/payments', paymentsRoutes);
 
