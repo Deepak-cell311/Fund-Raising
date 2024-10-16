@@ -24,19 +24,31 @@ app.options('', cors(corsOption));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
+let cachedDb = null;
+
 async function connectToDatabase() {
+  if (cachedDb) {
+    return cachedDb;
+  }
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    const db = await mongoose.connect(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
+    cachedDb = db;
     console.log('MongoDB connected');
+    return db;
   } catch (err) {
     console.error('MongoDB connection error:', err);
+    throw err;
   }
 }
 
-connectToDatabase();
+// Wrap your routes in an async function
+app.use(async (req, res, next) => {
+  await connectToDatabase();
+  next();
+});
 
 
 // Routes
@@ -46,12 +58,17 @@ app.get('/', (req, res) => {
 app.use('/api/donations', donationRoutes);
 app.use('/api/payments', paymentsRoutes);
 
-
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Something went wrong!' });
 });
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+module.exports = app;
