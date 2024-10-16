@@ -26,7 +26,7 @@ const Payment = () => {
         };
 
         try {
-            const response = await fetch('https://fund-raising-r319.vercel.app/api/payments', {
+            const response = await fetch('fund-raising-ird4.vercel.app/api/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
