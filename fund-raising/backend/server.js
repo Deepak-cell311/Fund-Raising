@@ -19,6 +19,7 @@ const corsOption = {
 };
 // Middleware
 app.use(cors(corsOption));
+app.options('*', cors(corsOption));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
@@ -30,7 +31,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 .catch(err => console.log(err));
 
 // Routes
-app.get('/api', (req, res) => {
+app.get('/', (req, res) => {
      res.status(200).json({message: "API is running"})
 })
 app.use('/api/donations', donationRoutes);
