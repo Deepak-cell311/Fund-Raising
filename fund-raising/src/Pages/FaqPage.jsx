@@ -36,11 +36,11 @@ const FAQ = () => {
       exit={{ opacity: 0 }}
     >
       <header className="text-center mb-10">
-        <h1 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h1>
+        <h1 className="text-3xl font-bold text-gray-900" style={{scrollbarWidth: "none"}}>Frequently Asked Questions</h1>
         <p className="mt-2 text-gray-600">Find answers to common questions about fundraising with NayePankh Foundation</p>
       </header>
 
-      <div className="space-y-4">
+      <div className="space-y-4" style={{scrollbarWidth: "none"}}>
         {faqs.map((faq, index) => (
           <motion.div
             key={index}
@@ -63,13 +63,10 @@ const FAQ = () => {
             <AnimatePresence>
               {openIndex === index && (
                 <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
                   className="px-6 py-4 bg-gray-50"
+                  style={{scrollbarWidth: "none"}}
                 >
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <p className="text-gray-600" >{faq.answer}</p>
                 </motion.div>
               )}
             </AnimatePresence>

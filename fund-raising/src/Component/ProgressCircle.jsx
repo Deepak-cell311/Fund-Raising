@@ -55,6 +55,7 @@ const ProgressCircle = ({
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
           className="relative"
+          style={{scrollbarWidth: "none"}}
         >
           <span className="text-3xl font-bold text-gray-800">{percentage}%</span>
         </motion.div>
