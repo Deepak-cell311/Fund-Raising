@@ -24,36 +24,15 @@ app.options('', cors(corsOption));
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-let cachedDb = null;
 
-async function connectToDatabase() {
-  if (cachedDb) {
-    return cachedDb;
-  }
-  try {
-    const db = await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
-    cachedDb = db;
-    console.log('MongoDB connected');
-    return db;
-  } catch (err) {
-    console.error('MongoDB connection error:', err);
-    throw err;
-  }
-}
-
-// Wrap your routes in an async function
-app.use(async (req, res, next) => {
-  await connectToDatabase();
-  next();
-});
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => { console.log('MongoDB connected') })
+  .catch((err) => { console.log('MongoDB connection error:', err) });
 
 
 // Routes
 app.get('/', (req, res) => {
-     res.status(200).json({message: "API is running"})
+  res.status(200).json({ message: "API is running" })
 })
 app.use('/api/donations', donationRoutes);
 app.use('/api/payments', paymentsRoutes);
