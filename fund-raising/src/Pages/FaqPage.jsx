@@ -26,7 +26,7 @@ const faqs = [
 ];
 
 const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState5(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   return (
     <motion.div
